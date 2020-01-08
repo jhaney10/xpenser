@@ -35,7 +35,6 @@
             </div>
           </div>
         @endif
-        
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
@@ -44,7 +43,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Today's Expenses</span>
                 <span class="info-box-number">
-                  {{$day}}
+                  {{$mycurrency}} {{$day}}
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -58,7 +57,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Expenses This Week</span>
-                <span class="info-box-number">{{$week}}</span>
+                <span class="info-box-number">{{$mycurrency}} {{$week}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -75,7 +74,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Expenses This Month</span>
-                <span class="info-box-number">{{$month}}</span>
+                <span class="info-box-number">{{$mycurrency}} {{$month}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -88,7 +87,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Expenses This Year</span>
-                <span class="info-box-number">{{$year}}</span>
+                <span class="info-box-number">{{$mycurrency}} {{$year}}</span>
               </div>
               <!-- /.info-box-content -->
             </div>

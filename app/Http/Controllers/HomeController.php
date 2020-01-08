@@ -30,10 +30,20 @@ class HomeController extends Controller
     {
       
          $userid=Auth::user()->id;
+         
+         $currency=DB::table('users')
+                    ->join('currency','users.currency','=','currency.currency_id')
+                    ->where('users.id',$userid)
+                    ->select('currency.currency_code')
+                    ->get();
+        $mycurrency=$currency->toArray();
+        foreach ($mycurrency as $key) {
+           $mymoney=$key->currency_code;
+        }
          $weekly = DB::table('expenses')
                 ->whereRaw('date(expenses.date) > DATE_SUB(NOW(), INTERVAL 1 WEEK)')
-                ->select('expenses.date', DB::raw('DATE(expenses.date) AS DATE,DAYNAME(expenses.date) as DAY,SUM(amount) AS total'))
                 ->where('userid',$userid)
+                ->select('expenses.date', DB::raw('DATE(expenses.date) AS DATE,DAYNAME(expenses.date) as DAY,SUM(amount) AS total'))
                 ->groupBy('expenses.date')
                 ->get();
 
@@ -73,7 +83,7 @@ class HomeController extends Controller
             ->where('expenses.userid',$userid)
             ->get();
         $expenses=$data->toArray();
-        return view('admin',['id'=>$userid,'expenses'=>$expenses,'year'=>$yrexpense,'month'=>$mntexp,'day'=>$dayexpense,'week'=>$wkexpense,'today'=>$today]);
+        return view('admin',['id'=>$userid,'expenses'=>$expenses,'year'=>$yrexpense,'month'=>$mntexp,'day'=>$dayexpense,'week'=>$wkexpense,'today'=>$today,'mycurrency'=>$mymoney]);
     }
 
     public function incomePage(){

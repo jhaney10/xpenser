@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'currency'=>['required'],
         ]);
     }
 
@@ -67,6 +68,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'currency'=>$data['currency'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -74,8 +76,8 @@ class RegisterController extends Controller
     {
         $data=DB::table('currency')
             ->get();
-
         $currency=$data->toArray();
+
         return view('auth.register',['money'=>$currency]);
     }
 }

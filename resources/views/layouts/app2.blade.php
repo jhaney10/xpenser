@@ -125,3 +125,6 @@
     <!-- /.sidebar -->
   </aside>
   @yield('content')
+</div>
+</body>
+</html>
