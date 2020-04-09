@@ -147,9 +147,9 @@
                               <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
                             </div>
                             <select class="form-control" name="currency" >
-                              <!-- @foreach($money as $key)
+                              @foreach($money as $key)
                                            <option value="{{$key->currency_id}}">{{$key->currency_name}}</option>
-                                        @endforeach -->
+                                        @endforeach
                             </select>
                           </div>
                           <!-- /.input group -->

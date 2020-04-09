@@ -52,9 +52,10 @@ class HomeController extends Controller
                 ->join('expcategory','expenses.catid','=','expcategory.id')
                 ->whereDay('date', Carbon::now())
                 ->where('userid',$userid)
-                ->select('expcategory.id','expcategory.category','expcategory.bgcolor','expenses.date', DB::raw('SUM(amount) as total'))
+                ->select('expcategory.id','expcategory.category','expenses.date', DB::raw('SUM(amount) as total'))
                 ->groupBy('expcategory.id')
                 ->get();
+                // ->select('expcategory.id','expcategory.category','expcategory.bgcolor','expenses.date', DB::raw('SUM(amount) as total'))
 
         $today=($daily->toArray());
         

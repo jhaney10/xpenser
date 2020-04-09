@@ -74,11 +74,10 @@ class RegisterController extends Controller
     }
     public function showRegistrationForm()
     {
-        // $data=DB::table('currency')
-        //     ->get();
-        // $currency=$data->toArray();
+        $data=DB::table('currency')
+            ->get();
+        $currency=$data->toArray();
 
-        // return view('auth.register',['money'=>$currency]);
-        return view('auth.register');
+        return view('auth.register',['money'=>$currency]);
     }
 }
